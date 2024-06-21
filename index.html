@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <img class="nuvem" src="./src/images/nuvem.png" />
+      <div>
+        <p class="titulo-pesquisar">Pesquisar</p>
+        <input
+          type="text"
+          class="pesquisar-clima"
+          id="caixa-pesquisa"
+          value=""
+        />
+        <button id="confirmar" type="button">Confirmar</button><br />
+        <small id="nameHelp" class="form-text text-muted"
+          >Insira: Cidade, Código do País (Ex: BR, EUA, CN...)</small
+        >
+      </div>
+      <div class="informacoes">
+        <p class="formatacao-info" id="local"></p>
+        <p class="formatacao-info" id="temperatura"></p>
+        <p class="formatacao-info" id="umidade"></p>
+        <p class="formatacao-info" id="descricao"></p>
+      </div>
+    </div>
+    <script src="./dist/bundle.js"></script>
+  </body>
+</html>

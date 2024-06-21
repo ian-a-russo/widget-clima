@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+p::first-letter {
+    text-transform: capitalize;
+}
+.form-text {
+    font-size: 0.875rem;
+    color: #86c6ff;
+    margin-top: 0.25rem;
+}
+.text-muted {
+    color: #beeaff;
+}
+.informacoes {
+    width: 200px;
+    height: 200px;
+    font-size: 25px;
+}
+.formatacao-info {
+    color:#535ef1;
+    -webkit-text-stroke-color:#2d20df;
+    -webkit-text-stroke-width: 0.5px;
+}
+.container {
+    background-image: linear-gradient(to bottom, #69d5e4, #7178f8);
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: cursive;
+}
+.titulo-pesquisar {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+.pesquisar-clima {
+    background-image: linear-gradient(to bottom, #bff8ff, #cbcdff);
+    border: 0.5px solid black;
+    width: 200px;
+    height: 25px;
+    font-family: cursive;
+}
+#confirmar {
+    background-image: linear-gradient(to bottom, #2fe5fd, #4d53ff);
+    height: 28px;
+    border: 0.5px solid black;
+}
+.nuvem {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    left: 600px;
+    bottom: 470px;
+}
