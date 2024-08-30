@@ -1,34 +1,33 @@
-import { infoClima } from "./classes/infoClima";
+import IClima from "./Interfaces/IClima";
 
-const getClima = async (local: string) => {
+async function setClima(response: Response) {
+  const data = await response.json();
+  const umidade = data.main.humidity;
+  const temperatura = Math.round(data.main.temp);
+  const descricao = data.weather[0].description;
 
-    const apiKey = "a1f4196e80a7b321eadf2b3cc2e2e702"
-    const baseUrl = "https://api.openweathermap.org/data/2.5/weather"
-    let complementoUrl = `?q=${encodeURI(local)}&appid=${apiKey}&units=metric&lang=pt_br`;
-    let url = `${baseUrl}${complementoUrl}`;
-    
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`Erro na requisição: ${response.status}`);
-        };
+  const info: IClima = {
+    temperatura,
+    descricao,
+    umidade,
+  };
 
-        const data = await response.json();
-        let umidade = data.main.humidity;
-        let temperatura = data.main.temp;
-        let descricao = data.weather[0].description;
+  return info;
+}
 
-        const infoClima: infoClima = {
-            temperatura,
-            descricao,
-            umidade
-        };
+export async function getClima(local: string) {
+  const apiKey = "a1f4196e80a7b321eadf2b3cc2e2e702";
 
-        console.log(data)
-        return infoClima
-    } catch (error) {
-        console.error('Erro:', error);
-    };
-};
-   
-export {getClima};
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(
+    local
+  )}&appid=${apiKey}&units=metric&lang=pt_br`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Erro na requisição: ${response.status}`);
+    }
+    const clima = setClima(response);
+    return clima;
+  } catch (error) {}
+}

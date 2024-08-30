@@ -1,24 +1,27 @@
 import { getClima } from "./consultaAPI";
 
-const pesquisa = document.getElementById("caixa-pesquisa") as HTMLInputElement
+const pesquisa = document.getElementById("caixa-pesquisa") as HTMLInputElement;
 
-const botaoConfirmar = <HTMLButtonElement> document.getElementById("confirmar")
+const confirmar = <HTMLButtonElement>document.getElementById("confirmar");
 
-const localEscolhido = <HTMLParagraphElement> document.getElementById("local")
-const temperaturaLocal = <HTMLParagraphElement> document.getElementById("temperatura")
-const umidadeLocal = <HTMLParagraphElement> document.getElementById("umidade")
-const descricaoLocal = <HTMLParagraphElement> document.getElementById("descricao")
+const localAtual = <HTMLParagraphElement>document.getElementById("local");
 
+const temperaturaAtual = <HTMLParagraphElement>(
+  document.getElementById("temperatura")
+);
 
-botaoConfirmar.addEventListener("click", async () => {
-    const valor = pesquisa.value
-    const dados = await getClima(valor);
+const umidadeLocal = <HTMLParagraphElement>document.getElementById("umidade");
 
-    console.log(valor);
+const descricaoLocal = <HTMLParagraphElement>(
+  document.getElementById("descricao")
+);
 
-    localEscolhido.textContent = `${valor}`;
-    temperaturaLocal.textContent = `${dados?.temperatura}°C`;
-    umidadeLocal.textContent = `Umidade de ${dados?.umidade}%`;
-    descricaoLocal.textContent = `${dados?.descricao}`;
+confirmar.addEventListener("click", async () => {
+  const local = pesquisa.value;
+  const dados = await getClima(local);
+
+  localAtual.textContent = `${local}`;
+  temperaturaAtual.textContent = `${dados?.temperatura}°C`;
+  umidadeLocal.textContent = `Umidade de ${dados?.umidade}%`;
+  descricaoLocal.textContent = `${dados?.descricao}`;
 });
-
